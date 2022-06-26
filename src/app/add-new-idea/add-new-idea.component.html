@@ -1,0 +1,42 @@
+<hr>
+<h5>Add new idea</h5>
+<hr>
+<form [formGroup]="addNewIdeaFormGrp" (ngSubmit)="onSubmit()">
+    <div class="form-group row">
+        <label for="title" class="col-sm-2 col-form-label">Title</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="title" formControlName="title" placeholder="add title of idea">
+        </div>
+
+        <div *ngIf="submitted && formGrpControls.title.errors" class="alert alert-danger">
+            <div *ngIf="formGrpControls.title.errors.required">Title is required</div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="description" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-5">
+            <input type="text" class="form-control" id="description" formControlName="description"
+                placeholder="add description of idea">
+        </div>
+        <div *ngIf="submitted && formGrpControls.description.errors" class="alert alert-danger">
+            <div *ngIf="formGrpControls.description.errors.required">description is required</div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="description" class="col-sm-2 col-form-label">Select Tags</label>
+        <div class="col-sm-5">
+            <select multiple class="custom-select" formControlName="tags">
+                <option *ngFor="let tag of tags" [ngValue]="tag">{{tag}}</option>
+            </select>
+        </div>
+        <div *ngIf="submitted && formGrpControls.tags.errors" class="alert alert-danger">
+            <div *ngIf="formGrpControls.tags.errors.required">tags is required</div>
+        </div>
+    </div>
+
+    <div class="col-sm-7 text-right">
+        <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+</form>

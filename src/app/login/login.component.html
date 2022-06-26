@@ -1,17 +1,16 @@
-<div class="container">
-    <div class="col-md-6 col-md-offset-3">
-        <h3>Log In</h3>
-        <p>{{message}}</p>
-        <form [formGroup]="loginForm">
-            <div class="form-group clearfix">
-                <label class="col-md-3 col-sm-5 col-xs-12" for="userid">Userid</label>
-                <div class="col-md-9 col-sm-7 col-xs-12">
-                    <input class="form-control" formControlName="userid" type="text" required />
-                </div>
-            </div>
-            <div class="col-xs-12 form-group text-right">
-                <button (click)="login()" type="button" class="btn btn-success">login</button>
-            </div>
-        </form>
+<form [formGroup]="loginForm" class="clearfix">
+    <hr>
+    <h3>Log In</h3>
+    <p>{{message}}</p>
+    <div class="form-group row">
+        <label for="userid" class="col-sm-2 col-form-label">Enter userid</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control" id="userid" formControlName="userid"
+                placeholder="Enter Userid as admin" required>
+        </div>
     </div>
-</div>
+    <div class="col-sm-6 text-right">
+        <button (click)="login()" type="button" class="btn btn-success">login</button>
+    </div>
+    <hr>
+</form>

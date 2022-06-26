@@ -1,16 +1,8 @@
 <div class="container">
-    <!-- Static navbar -->
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header"><button aria-controls="navbar" aria-expanded="false"
-                    class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse" type="button">
-                    <span class="sr-only">Toggle navigation</span></button>
-                <a class="navbar-brand" href="#">{{title}}</a>
-            </div>
-            <ul *ngIf="isUserLoggedIn" class="nav navbar-nav navbar-right">
-                <li><a href="#" (click)="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-            </ul>
-        </div>
+    <nav class="navbar navbar-dark bg-dark justify-content-between">
+        <span class="navbar-brand mb-0 h1">{{title}}</span>
+        <button *ngIf="isUserLoggedIn" class="btn btn-outline-danger my-2 my-sm-0" type="button"
+            (click)="logout()">LogOut</button>
     </nav>
     <router-outlet></router-outlet>
 </div>

@@ -1,30 +1,39 @@
+<hr>
 <div class="row">
-    <div class="col-md-11">
+    <div class="col-sm-10">
         <h4>Welcome, {{userid}}</h4>
     </div>
-    <button class="btn btn-primary">Add New</button>
+    <div class="col-sm-2 text-right">
+        <button class="btn btn-primary" routerLink="/addnewidea">Add New</button>
+    </div>
+</div>
+
+<div class="btn-group" role="group">
+    <button (click)="sortyByVote('low to high')" type="button" class="btn btn-secondary">Vote - low to high</button>
+    <button (click)="sortyByVote('high to low')" type="button" class="btn btn-secondary">Vote - high to low</button>
+    <button (click)="sortByDateTime('Recent first')" type="button" class="btn btn-secondary">Creation Date Time - Recent
+        first</button>
+    <button (click)="sortByDateTime('Oldest first')" type="button" class="btn btn-secondary">Creation Date Time - Oldest
+        first</button>
 </div>
 <hr>
 <!-- list of panel is ng-template -->
-<div class="panel panel-info">
 
-    <div class="panel-heading">
-        <h3 class="panel-title">Panel title</h3>
-    </div>
-
-    <div class="panel-body">
-        Panel content
-    </div>
-
-    <div class="panel-footer">
-        <div class="row">
-            <div class="col-md-11">Panel footer</div>
-            <div class="col-md-1">
-                <button class="btn btn-primary" type="button">
-                    <span class="badge">5</span>
-                    <span class="glyphicon glyphicon-arrow-up"></span>
-                </button>
+<div class="row">
+    <div class="col-sm-6" *ngFor="let hackideas of hackIdeasCollection">
+        <div class="card">
+            <h5 class="card-header">{{hackideas.title}}</h5>
+            <div class="card-body">
+                <p class="card-text">{{hackideas.description}}</p>
+                <span style="margin: 3px;" class="badge badge-info" *ngFor="let tags of hackideas.tags">{{tags}}</span>
+                <div>Created on : {{hackideas.creationDateTime | date:'medium'}}</div>
+                <div>
+                    <button type="button" class="btn btn-primary" (click)="onUpVoteClick(hackideas)">
+                        Like <span class="badge badge-light">{{hackideas.upvote}}</span>
+                    </button>
+                </div>
             </div>
         </div>
+        <hr>
     </div>
 </div>

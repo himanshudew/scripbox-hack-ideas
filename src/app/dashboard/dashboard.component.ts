@@ -46,5 +46,6 @@ export class DashboardComponent implements OnInit {
     if (order == 'Oldest first') {
       this.hackIdeasCollection.sort((a, b) => Date.parse(a.creationDateTime) - Date.parse(b.creationDateTime));
     }
+    console.log(this.hackIdeasCollection);
   }
 } 

@@ -1,9 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment';
 import { IhackIdea } from '../dashboard/hack-ideas';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-add-new-idea',
@@ -20,7 +19,7 @@ export class AddNewIdeaComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private httpClient: HttpClient,
+    private dataService: DataService,
     private router: Router
   ) { }
 
@@ -51,10 +50,9 @@ export class AddNewIdeaComponent implements OnInit {
       creationDateTime: new Date().toISOString()
     };
 
-    this.httpClient.post(environment.API_URL, this.hackIdea, { headers: environment.API_URL_HEADERS })
-      .subscribe(res => {
-        alert('Idea successfully added.');
-        this.router.navigate(['']);
-      });
+    this.dataService.addNew(this.hackIdea).subscribe(res => {
+      alert('Idea successfully added.');
+      this.router.navigate(['']);
+    });
   }
 }

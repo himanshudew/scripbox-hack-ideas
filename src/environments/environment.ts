@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  API_URL: 'https://scripbox26062022-a09c.restdb.io/rest/hackideascollection',
+  API_URL: 'https://scripboxdb29062022-825d.restdb.io/rest/hackideascollection',
   API_URL_HEADERS: {
-    'x-apikey': '62b844affaa52c0eb951ac92',
+    'x-apikey': '62bc0f22e91195203e3aa70b',
     "content-type": "application/json"
   }
 };
